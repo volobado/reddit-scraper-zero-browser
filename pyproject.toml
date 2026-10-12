@@ -1,0 +1,46 @@
+[project]
+name = "reddspectre"
+version = "0.2.1"
+description = "Zero-browser Reddit scraper: subreddits, search, users and full comment threads to JSON, JSONL, CSV, SQLite or Markdown"
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "Volo Bado", email = "274094911+volobado@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "curl-cffi>=0.16.3",
+    "rich>=15.0.0",
+]
+
+[project.urls]
+Repository = "https://github.com/volobado/reddit-scraper-zero-browser"
+Changelog = "https://github.com/volobado/reddit-scraper-zero-browser/blob/main/CHANGELOG.md"
+
+[project.scripts]
+reddspectre = "reddspectre.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.8",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.3,<0.13.0"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = ["live: talks to Reddit (deselected by default; run with -m live)"]
+addopts = "-m 'not live'"

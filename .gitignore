@@ -1,0 +1,22 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.pytest_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv
+
+# Scrape outputs (keep test fixtures)
+*.json
+*.jsonl
+*.csv
+*.db
+*.sqlite
+*.sqlite3
+out/
+!tests/fixtures/*.json
